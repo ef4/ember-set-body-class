@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import getDOM from '../util/get-dom';
 
 export default Component.extend({
+  tagName: '',
   init() {
     this._super(...arguments);
     let body = getDOM(this).body;
