@@ -1,5 +1,6 @@
 /* eslint-env node */
 module.exports = {
+  useYarn: true,
   scenarios: [
     {
       name: 'ember-lts-2.8',
@@ -78,6 +79,10 @@ module.exports = {
       npm: {
         devDependencies: {}
       }
+    },
+    {
+      name: 'fastboot',
+      command: 'yarn run test:fastboot'
     }
   ]
 };
