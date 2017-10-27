@@ -1,3 +1,10 @@
-<h2 id="title">Welcome to Ember</h2>
+{{#if redText}}
+  {{set-body-class "red-text"}}
+{{/if}}
 
-{{outlet}}
+{{#if blueBackground}}
+  {{set-body-class "blue-background"}}
+{{/if}}
+
+<label>{{input type="checkbox" checked=redText}} Red Text</label>
+<label>{{input type="checkbox" checked=blueBackground}} Blue Background</label>
