@@ -1,17 +1,20 @@
 {
   "name": "ember-set-body-class",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.1.0",
+  "description": "Fastboot-compatible, template-driven helper for setting <body> classes.",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "body",
+    "class",
+    "fastboot"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "Edward Faulkner <edward@eaf4.com>",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": "https://github.com/ef4/ember-set-body-class",
   "scripts": {
     "build": "ember build",
     "start": "ember server",
