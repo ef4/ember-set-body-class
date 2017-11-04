@@ -1,6 +1,6 @@
 {
   "name": "ember-set-body-class",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Fastboot-compatible, template-driven helper for setting <body> classes.",
   "keywords": [
     "ember-addon",
