@@ -3,7 +3,7 @@
 This addon lets you set classes on the body like:
 
 ```hbs
-{{set-body-class "hello}}
+{{set-body-class "hello"}}
 ```
 
 Whenever the above template is rendered, the `<body>` tag will have class `hello` added to it. When it's destroyed, the class is removed.
