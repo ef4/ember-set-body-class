@@ -5,3 +5,13 @@ body.red-text {
 body.blue-background {
     background-color: #6666ff;
 }
+
+body.small-text {
+  font-size: medium;
+}
+body.medium-text {
+  font-size: large;
+}
+body.large-text {
+  font-size: xx-large;
+}

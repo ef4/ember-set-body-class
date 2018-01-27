@@ -38,4 +38,25 @@ module('Integration | Component | set body class', function(hooks) {
     assert.ok(!document.querySelector('body.hello'), "should not find .hello on body");
   });
 
+  test('bound class works', async function(assert) {
+    assert.expect(3);
+    this.set('dynamicName', 'hello');
+    await render(hbs`{{set-body-class dynamicName}}`);
+    assert.ok(document.querySelector('body.hello'), 'should find .hello on body');
+    this.set('dynamicName', 'howdy');
+    assert.ok(document.querySelector('body.howdy'), 'should find .howdy on body');
+    assert.ok(!document.querySelector('body.hello'), 'should not find .hello on body');
+  });
+
+  test('behaves with undefined', async function(assert) {
+    this.set('dynamicName', undefined);
+    await render(hbs`{{set-body-class dynamicName}}`);
+    assert.ok(!document.querySelector('body.undefined'), 'should not find .undefined on body');
+  });
+
+  test('behaves with null', async function(assert) {
+    this.set('dynamicName', null);
+    await render(hbs`{{set-body-class dynamicName}}`);
+    assert.ok(!document.querySelector('body.null'), 'should not find .null on body');
+  });
 });

@@ -3,34 +3,40 @@ import getDOM from '../util/get-dom';
 
 export default Component.extend({
   tagName: '',
-  init() {
+
+  didReceiveAttrs() {
     this._super(...arguments);
-    let body = getDOM(this).body;
-    let attr = body.getAttribute('class');
     let name = this.get('name');
-    if (attr) {
-      let classList = attr.split(/\s+/);
-      if (classList.indexOf(name) === -1) {
-        classList.push(name);
-        body.setAttribute('class', classList.join(' '));
-      }
-    } else {
-      body.setAttribute('class', name);
-    }
+    this._updateBodyClass(this._stashedName, name);
+    this._stashedName = name;
   },
+
   willDestroyElement() {
     this._super(...arguments);
+    let name = this.get('name');
+    this._updateBodyClass(name, null);
+    this._stashedName = null;
+  },
+
+  _updateBodyClass(nameToRemove, nameToSet) {
     let body = getDOM(this).body;
     let attr = body.getAttribute('class');
-    let name = this.get('name');
-    if (attr) {
-      let classList = attr.split(/\s+/);
-      let index = classList.indexOf(name);
-      if (index !== -1) {
-        classList.splice(index, 1);
-        body.setAttribute('class', classList.join(' '));
+    let classList = attr ? attr.split(/\s+/) : [];
+
+    if (nameToSet) {
+      if (classList.indexOf(nameToSet) === -1) {
+        classList.push(nameToSet);
       }
     }
+
+    if (nameToRemove) {
+      let index = classList.indexOf(nameToRemove);
+      if (index !== -1) {
+        classList.splice(index, 1);
+      }
+    }
+
+    body.setAttribute('class', classList.join(' '));
   }
 }).reopenClass({
   positionalParams: ['name']
