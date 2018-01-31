@@ -6,5 +6,15 @@
   {{set-body-class "blue-background"}}
 {{/if}}
 
+{{set-body-class textSize}}
+
 <label>{{input type="checkbox" checked=redText}} Red Text</label>
 <label>{{input type="checkbox" checked=blueBackground}} Blue Background</label>
+<br>
+
+Text Size:
+<select onchange={{action (mut textSize) value="target.value"}}>
+  {{#each textSizes as |textSizeChoice|}}
+    <option value={{textSizeChoice}} >{{textSizeChoice}}</option>
+  {{/each}}
+</select>
