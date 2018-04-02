@@ -44,7 +44,7 @@
     "ember-load-initializers": "^1.0.0",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.16.0",
-    "fastboot": "https://github.com/ember-fastboot/fastboot#20bbbc357b8183d0b2ca4463c5cb1dca5f7fdf8f",
+    "fastboot": "^1.1.1",
     "loader.js": "^4.2.3",
     "qunitjs": "^2.4.1"
   },
