@@ -22,19 +22,21 @@ export default Component.extend({
     let body = getDOM(this).body;
     let attr = body.getAttribute('class');
     let classList = attr ? attr.split(/\s+/) : [];
-
-    if (nameToSet) {
-      if (classList.indexOf(nameToSet) === -1) {
-        classList.push(nameToSet);
-      }
-    }
-
-    if (nameToRemove) {
-      let index = classList.indexOf(nameToRemove);
+    let namesToSet = nameToSet ? nameToSet.split(/\s+/) : [];
+    let namesToRemove = nameToRemove ? nameToRemove.split(/\s+/) : [];
+    
+    namesToRemove.forEach(name => {
+      let index = classList.indexOf(name);
       if (index !== -1) {
         classList.splice(index, 1);
       }
-    }
+    });
+
+    namesToSet.forEach(name => {
+      if (classList.indexOf(name) === -1) {
+        classList.push(name);
+      }
+    });
 
     body.setAttribute('class', classList.join(' '));
   }
