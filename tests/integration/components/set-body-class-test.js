@@ -59,4 +59,19 @@ module('Integration | Component | set body class', function(hooks) {
     await render(hbs`{{set-body-class dynamicName}}`);
     assert.ok(!document.querySelector('body.null'), 'should not find .null on body');
   });
+
+  test('adds multiple classes', async function(assert) {
+    this.set('dynamicName', 'a b c');
+    await render(hbs`{{set-body-class dynamicName}}`);
+    assert.ok(document.querySelector('body.a.b.c'), 'should find a b and c on body');
+  });
+
+  test('removes some of multiple classes', async function(assert) {
+    this.set('dynamicName', 'a b c');
+    await render(hbs`{{set-body-class dynamicName}}`);
+    this.set('dynamicName', 'a c');
+    await settled();
+    assert.ok(!document.querySelector('body.b'), 'should not b on body');
+    assert.ok(document.querySelector('body.a.c'), 'should find a and c on body');
+  });
 });
