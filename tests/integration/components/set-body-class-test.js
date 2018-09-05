@@ -28,6 +28,17 @@ module('Integration | Component | set body class', function(hooks) {
     assert.ok(!document.querySelector('body.goodbye'), "should not find hello goodbye");
   });
 
+  test('doesn’t remove class if it’s still used somewhere else', async function(assert) {
+    assert.expect(2);
+    this.set('showFirst', true);
+    this.set('showSecond', true);
+    await render(hbs`{{#if showFirst}}{{set-body-class "hello"}}{{/if}}{{#if showSecond}}{{set-body-class "hello"}}{{/if}}`);
+    this.set('showFirst', false);
+    assert.ok(document.querySelector('body.hello'), "should find hello body");
+    this.set('showSecond', false);
+    assert.notOk(document.querySelector('body.hello'), "should not find hello body");
+  });
+
   test('removes last class', async function(assert) {
     assert.expect(2);
     this.set('showIt', true);
