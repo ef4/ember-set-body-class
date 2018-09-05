@@ -1,6 +1,23 @@
 import Component from '@ember/component';
 import getDOM from '../util/get-dom';
 
+let globalClassList = [];
+
+function removeObjects(array, objectsToRemove) {
+  objectsToRemove.forEach(name => {
+    let index = array.indexOf(name);
+    if (index !== -1) {
+      array.splice(index, 1);
+    }
+  });
+}
+
+function addObjects(array, objectsToAdd) {
+  objectsToAdd.forEach(name => {
+    array.push(name);
+  });
+}
+
 export default Component.extend({
   tagName: '',
 
@@ -24,19 +41,13 @@ export default Component.extend({
     let classList = attr ? attr.split(/\s+/) : [];
     let namesToSet = nameToSet ? nameToSet.split(/\s+/) : [];
     let namesToRemove = nameToRemove ? nameToRemove.split(/\s+/) : [];
-    
-    namesToRemove.forEach(name => {
-      let index = classList.indexOf(name);
-      if (index !== -1) {
-        classList.splice(index, 1);
-      }
-    });
 
-    namesToSet.forEach(name => {
-      if (classList.indexOf(name) === -1) {
-        classList.push(name);
-      }
-    });
+    removeObjects(classList, globalClassList);
+
+    removeObjects(globalClassList, namesToRemove);
+    addObjects(globalClassList, namesToSet);
+
+    addObjects(classList, globalClassList);
 
     body.setAttribute('class', classList.join(' '));
   }
