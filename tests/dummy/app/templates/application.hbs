@@ -8,9 +8,9 @@
 
 {{set-body-class textSize}}
 
-<label>{{input type="checkbox" checked=redText}} Red Text</label>
-<label>{{input type="checkbox" checked=blueBackground}} Blue Background</label>
-<br>
+<label>{{input type="checkbox" checked=redText name="redText"}} Red Text</label>
+<label>{{input type="checkbox" checked=blueBackground name="blueBackground"}} Blue Background</label>
+<br />
 
 Text Size:
 <select onchange={{action (mut textSize) value="target.value"}}>
@@ -18,3 +18,9 @@ Text Size:
     <option value={{textSizeChoice}} >{{textSizeChoice}}</option>
   {{/each}}
 </select>
+
+<br />
+
+Any class name:
+{{input value=dynamicClassName name="dynamicClassName"}}
+{{set-body-class dynamicClassName}}
