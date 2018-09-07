@@ -6,6 +6,7 @@ import getDOM from '../util/get-dom';
 
 export default Service.extend({
   register(component) {
+    this._dom = getDOM(component);
     this.get('components').addObject(component);
   },
 
@@ -14,7 +15,6 @@ export default Service.extend({
   },
 
   components: computed(() => A()),
-  renderer: {},
 
   init() {
     this._super(...arguments);
@@ -33,7 +33,9 @@ export default Service.extend({
   }),
 
   updateBodyClass() {
-    let body = getDOM(this).body;
+    if (!this._dom) { return; }
+
+    let body = this._dom.body;
     let attr = body.getAttribute('class');
     let classList = A(attr ? attr.split(/\s+/) : []);
 

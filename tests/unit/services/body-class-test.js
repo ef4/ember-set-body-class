@@ -1,15 +1,19 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import EmberObject from '@ember/object';
 import { run } from '@ember/runloop';
+import Component from '@ember/component';
 
 module('Unit | Service | body class', function(hooks) {
   setupRenderingTest(hooks);
 
+  hooks.beforeEach(function() {
+    this.owner.register('component:fake-component', Component.extend())
+  });
+
   test('it collects names from all registered components', function(assert) {
     let service = this.owner.lookup('service:body-class');
-    let component1 = EmberObject.create({name: 'dog'});
-    let component2 = EmberObject.create({name: 'horse cow'});
+    let component1 = this.owner.factoryFor('component:fake-component').create({name: 'dog'});
+    let component2 = this.owner.factoryFor('component:fake-component').create({name: 'horse cow'});
 
     run(() => {
       service.register(component1);
@@ -42,6 +46,7 @@ module('Unit | Service | body class', function(hooks) {
 
   test('it updates body class', function(assert) {
     let service = this.owner.lookup('service:body-class');
+    service._dom = document;
 
     document.querySelector('body').className += ' cactus';
     run(() => service.set('names', ['cow', 'horse']));
