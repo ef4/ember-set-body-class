@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 export default Component.extend({
   bodyClass: service(),
 
-  didInsertElement() {
+  didReceiveAttrs() {
     this._super(...arguments);
     this.get('bodyClass').register(this);
   },
@@ -13,7 +13,7 @@ export default Component.extend({
     this.get('bodyClass').deregister(this);
     this._super(...arguments);
   }
-  
+
 }).reopenClass({
   positionalParams: ['name']
 });
