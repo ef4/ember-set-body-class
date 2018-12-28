@@ -38,4 +38,16 @@ module('Integration | Component | set body class', function(hooks) {
 
     assert.ok(service.deregister.calledOnce, 'the second component should deregister');
   });
+
+  test('does not output a DOM element for {{set-body-class}}', async function(assert) {
+    let service = this.owner.lookup('service:body-class');
+    service.register =   sinon.stub();
+    service.deregister = sinon.stub();
+
+    await render(hbs`
+      {{set-body-class "hello"}}
+    `);
+
+    assert.equal(this.element.children.length, 0);
+  });
 });
