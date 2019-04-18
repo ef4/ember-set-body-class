@@ -8,7 +8,7 @@ This addon lets you set classes on the body like:
 
 Whenever the above template is rendered, the `<body>` tag will have class `hello` added to it. When it's destroyed, the class is removed.
 
-This works in both in-browser and in Fastboot. Fastboot support depends on https://github.com/ember-fastboot/fastboot/commit/20bbbc357b8183d0b2ca4463c5cb1dca5f7fdf8f).
+This works in both in-browser and in Fastboot. Fastboot support requires at least Fastboot 1.1.1 (which incorporated the work done in https://github.com/ember-fastboot/fastboot/pull/171).
 
 
 ## Install
