@@ -15,6 +15,6 @@ export default function getDOM(context) {
   if (renderer._dom && renderer._dom.document) { // pre Ember 2.6
     return renderer._dom.document;
   } else {
-    throw new Error('ember-wormhole could not get DOM');
+    throw new Error('ember-set-body-class could not get DOM');
   }
 }
