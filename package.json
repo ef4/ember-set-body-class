@@ -17,6 +17,7 @@
   "repository": "https://github.com/ef4/ember-set-body-class",
   "scripts": {
     "build": "ember build",
+    "lint:js": "eslint .",
     "start": "ember server",
     "test": "ember try:each",
     "test:fastboot": "qunit fastboot-tests"
@@ -30,7 +31,6 @@
     "ember-ajax": "^3.0.0",
     "ember-cli": "~2.16.2",
     "ember-cli-dependency-checker": "^2.0.0",
-    "ember-cli-eslint": "^4.0.0",
     "ember-cli-fastboot": "https://github.com/ef4/ember-cli-fastboot#6db1842fe437c2d63f9f27ac0a8a56054ff8145e",
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cli-htmlbars-inline-precompile": "^1.0.0",
@@ -45,6 +45,7 @@
     "ember-resolver": "^4.0.0",
     "ember-sinon": "^2.2.0",
     "ember-source": "~2.16.0",
+    "eslint": "^4.19.1",
     "fastboot": "^1.1.1",
     "loader.js": "^4.2.3",
     "qunitjs": "^2.4.1"
