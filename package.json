@@ -19,8 +19,7 @@
     "build": "ember build",
     "lint:js": "eslint .",
     "start": "ember server",
-    "test": "ember try:each",
-    "test:fastboot": "qunit fastboot-tests"
+    "test": "ember try:each"
   },
   "dependencies": {
     "ember-cli-babel": "^6.6.0"
@@ -32,6 +31,7 @@
     "ember-cli": "~3.21.2",
     "ember-cli-dependency-checker": "^2.0.0",
     "ember-cli-fastboot": "^2.2.3",
+    "ember-cli-fastboot-testing": "^0.4.0",
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cli-htmlbars-inline-precompile": "^1.0.0",
     "ember-cli-inject-live-reload": "^1.4.1",
@@ -47,9 +47,7 @@
     "ember-source": "~2.16.0",
     "ember-try": "^1.4.0",
     "eslint": "^4.19.1",
-    "fastboot": "^2.0.3",
-    "loader.js": "^4.2.3",
-    "qunitjs": "^2.4.1"
+    "loader.js": "^4.2.3"
   },
   "engines": {
     "node": "10.* || 12.* || >= 14.*"

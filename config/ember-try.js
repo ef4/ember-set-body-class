@@ -136,9 +136,5 @@ module.exports = {
         devDependencies: {}
       }
     },
-    {
-      name: 'fastboot',
-      command: 'yarn run test:fastboot'
-    }
   ]
 };

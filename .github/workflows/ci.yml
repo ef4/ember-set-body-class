@@ -39,20 +39,6 @@ jobs:
       - run: yarn install --no-lockfile
       - run: yarn ember test
 
-  fastboot:
-    name: Fastboot Tests
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - uses: volta-cli/action@v1
-        with:
-          node-version: 10.x
-          yarn-version: 1.22.5
-
-      - run: yarn install --frozen-lockfile
-      - run: yarn test:fastboot
-
   try-scenarios:
     name: "ember-try: ${{ matrix.ember-try-scenario }}"
     runs-on: ubuntu-latest
