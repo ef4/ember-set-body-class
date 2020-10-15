@@ -7,17 +7,16 @@ module('Acceptance | index', function (hooks) {
 
   test('updates body class', async function (assert) {
     await visit('/');
-    assert.ok(document.querySelector('body.red-text'), 'should find .red-text on body');
+    assert.dom(document.body).hasClass('red-text');
 
     await click('input[name=blueBackground]');
-    assert.ok(document.querySelector('body.red-text.blue-background'), 'should find both classes body');
+    assert.dom(document.body).hasClass('red-text').hasClass('blue-background');
 
     await click('input[name=redText]');
-    assert.notOk(document.querySelector('body.red-text'), 'should not find .red-text body');
-    assert.ok(document.querySelector('body.blue-background'), 'should find .blue-background body');
+    assert.dom(document.body).doesNotHaveClass('red-text').hasClass('blue-background');
 
     await fillIn('input[name=dynamicClassName]', 'blue-background');
     await click('input[name=blueBackground]');
-    assert.ok(document.querySelector('body.blue-background'), 'should still find .blue-background body');
+    assert.dom(document.body).hasClass('blue-background');
   });
 });
