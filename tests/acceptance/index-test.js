@@ -1,36 +1,23 @@
-import { test } from 'qunit';
-import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
+import { click, fillIn, visit } from '@ember/test-helpers';
 
-moduleForAcceptance('Acceptance | index');
+module('Acceptance | index', function (hooks) {
+  setupApplicationTest(hooks);
 
-test('updates body class', function(assert) {
-  visit('/');
-
-  andThen(() => {
+  test('updates body class', async function (assert) {
+    await visit('/');
     assert.ok(document.querySelector('body.red-text'), 'should find .red-text on body');
 
-    click('input[name=blueBackground]');
+    await click('input[name=blueBackground]');
+    assert.ok(document.querySelector('body.red-text.blue-background'), 'should find both classes body');
 
-    andThen(() => {
-      assert.ok(document.querySelector('body.red-text.blue-background'), 'should find both classes body');
+    await click('input[name=redText]');
+    assert.notOk(document.querySelector('body.red-text'), 'should not find .red-text body');
+    assert.ok(document.querySelector('body.blue-background'), 'should find .blue-background body');
 
-      click('input[name=redText]');
-
-      andThen(() => {
-        assert.notOk(document.querySelector('body.red-text'), 'should not find .red-text body');
-        assert.ok(document.querySelector('body.blue-background'), 'should find .blue-background body');
-
-        fillIn('input[name=dynamicClassName]', 'blue-background');
-        click('input[name=blueBackground]');
-
-        andThen(() => {
-          assert.ok(document.querySelector('body.blue-background'), 'should still find .blue-background body');
-        });
-
-      });
-
-    });
-
+    await fillIn('input[name=dynamicClassName]', 'blue-background');
+    await click('input[name=blueBackground]');
+    assert.ok(document.querySelector('body.blue-background'), 'should still find .blue-background body');
   });
-
 });
