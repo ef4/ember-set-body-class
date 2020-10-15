@@ -44,7 +44,7 @@
     "ember-load-initializers": "^1.0.0",
     "ember-resolver": "^4.0.0",
     "ember-sinon": "^2.2.0",
-    "ember-source": "~2.16.0",
+    "ember-source": "~3.8.3",
     "ember-try": "^1.4.0",
     "eslint": "^4.19.1",
     "loader.js": "^4.2.3"
