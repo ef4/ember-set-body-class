@@ -53,15 +53,19 @@ module('Unit | Service | body class', function(hooks) {
     document.querySelector('body').className += ' cactus';
     run(() => service.set('names', ['cow', 'horse']));
 
-    assert.ok(document.querySelector('body.cow.horse'), 'should set .cow.horse class on body element');
-    assert.ok(document.querySelector('body.cactus'), 'should keep existing classes (.cactus)');
+    assert.dom(document.body)
+      .hasClass('cow', 'should set .cow class on body element')
+      .hasClass('horse', 'should set .horse class on body element')
+      .hasClass('cactus', 'should keep existing classes (.cactus)');
 
     document.querySelector('body').className += ' pine';
     run(() => service.set('names', ['elephant']));
 
-    assert.ok(document.querySelector('body.elephant'), 'should set .elephant class on body element');
-    assert.ok(document.querySelector('body.cactus.pine'), 'should keep existing classes (.cactus.pine)');
-    assert.notOk(document.querySelector('body.cow'), 'should remove .cow class from body element');
-    assert.notOk(document.querySelector('body.horse'), 'should remove .horse class from body element');
+    assert.dom(document.body)
+      .hasClass('elephant', 'should set .elephant class on body element')
+      .hasClass('cactus', 'should keep existing classes (.cactus)')
+      .hasClass('pine', 'should keep existing classes (.pine)')
+      .doesNotHaveClass('cow', 'should remove .cow class from body element')
+      .doesNotHaveClass('horse', 'should remove .horse class from body element');
   });
 });
