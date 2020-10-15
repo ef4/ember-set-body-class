@@ -4067,13 +4067,15 @@ ember-cli-babel@^7.1.0, ember-cli-babel@^7.11.0, ember-cli-babel@^7.12.0, ember-
     rimraf "^3.0.1"
     semver "^5.5.0"
 
-ember-cli-dependency-checker@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/ember-cli-dependency-checker/-/ember-cli-dependency-checker-2.0.1.tgz#e44cd2f8cdbf6a1043092de1ebfd62e7b8c00dd1"
-  integrity sha512-eL7P3nCmekZ7pR1M+lTjZm2FnxTRQ14eVDbcGIFeku5v5GrCSSLYUB4wqSBlkhCmakOdmgXzAnHIpQGmk4WBuw==
+ember-cli-dependency-checker@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/ember-cli-dependency-checker/-/ember-cli-dependency-checker-2.2.1.tgz#1eb728258dc7d528951c391d39b365e1beedecca"
+  integrity sha512-DmxayycdIPx6wZLpfwXq+MOtKtxhFbCw05kdGaQEyKKNSMeSdywsUjZyxneEpGb8Ztrm+kBwFW3eseydnYLWyw==
   dependencies:
-    chalk "^1.1.3"
+    chalk "^2.3.0"
+    find-yarn-workspace-root "^1.1.0"
     is-git-url "^1.0.0"
+    resolve "^1.5.0"
     semver "^5.3.0"
 
 ember-cli-fastboot-testing@0.4.0:
@@ -5205,6 +5207,14 @@ find-up@^4.1.0:
   dependencies:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
+
+find-yarn-workspace-root@^1.1.0:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/find-yarn-workspace-root/-/find-yarn-workspace-root-1.2.1.tgz#40eb8e6e7c2502ddfaa2577c176f221422f860db"
+  integrity sha512-dVtfb0WuQG+8Ag2uWkbG79hOUzEsRrhBzgfn86g2sJPkzmcpGdghbNTfUKGTxymFrY/tLIodDzLoW9nOJ4FY8Q==
+  dependencies:
+    fs-extra "^4.0.3"
+    micromatch "^3.1.4"
 
 find-yarn-workspace-root@^2.0.0:
   version "2.0.0"
@@ -8560,7 +8570,7 @@ resolve-url@^0.2.1:
   resolved "https://registry.yarnpkg.com/resolve-url/-/resolve-url-0.2.1.tgz#2c637fe77c893afd2a663fe21aa9080068e2052a"
   integrity sha1-LGN/53yJOv0qZj/iGqkIAGjiBSo=
 
-resolve@^1.10.0, resolve@^1.10.1, resolve@^1.11.1, resolve@^1.12.0, resolve@^1.13.1, resolve@^1.15.0, resolve@^1.17.0, resolve@^1.3.2, resolve@^1.3.3, resolve@^1.4.0, resolve@^1.7.1, resolve@^1.8.1, resolve@^1.9.0:
+resolve@^1.10.0, resolve@^1.10.1, resolve@^1.11.1, resolve@^1.12.0, resolve@^1.13.1, resolve@^1.15.0, resolve@^1.17.0, resolve@^1.3.2, resolve@^1.3.3, resolve@^1.4.0, resolve@^1.5.0, resolve@^1.7.1, resolve@^1.8.1, resolve@^1.9.0:
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.17.0.tgz#b25941b54968231cc2d1bb76a79cb7f2c0bf8444"
   integrity sha512-ic+7JYiV8Vi2yzQGFWOkiZD5Z9z7O2Zhm9XMaTxdJExKasieFCr+yXZ/WmXsckHiKl12ar0y6XiXDx3m4RHn1w==
