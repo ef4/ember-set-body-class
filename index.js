@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-set-body-class'
+  name: 'ember-set-body-class',
 };

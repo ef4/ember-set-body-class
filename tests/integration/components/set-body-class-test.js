@@ -7,18 +7,18 @@ import Service from '@ember/service';
 
 const serviceStub = Service.extend();
 
-module('Integration | Component | set body class', function(hooks) {
+module('Integration | Component | set body class', function (hooks) {
   setupRenderingTest(hooks);
 
-  hooks.beforeEach(function() {
+  hooks.beforeEach(function () {
     this.owner.register('service:body-class', serviceStub);
   });
 
-  test('registers in the body-class service', async function(assert) {
+  test('registers in the body-class service', async function (assert) {
     assert.expect(3);
 
     let service = this.owner.lookup('service:body-class');
-    service.register =   sinon.spy();
+    service.register = sinon.spy();
     service.deregister = sinon.spy();
 
     await render(hbs`
@@ -39,9 +39,9 @@ module('Integration | Component | set body class', function(hooks) {
     assert.ok(service.deregister.calledOnce, 'the second component should deregister');
   });
 
-  test('does not output a DOM element for {{set-body-class}}', async function(assert) {
+  test('does not output a DOM element for {{set-body-class}}', async function (assert) {
     let service = this.owner.lookup('service:body-class');
-    service.register =   sinon.stub();
+    service.register = sinon.stub();
     service.deregister = sinon.stub();
 
     await render(hbs`

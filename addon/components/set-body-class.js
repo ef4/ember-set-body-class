@@ -14,8 +14,7 @@ export default Component.extend({
   willDestroyElement() {
     this.get('bodyClass').deregister(this);
     this._super(...arguments);
-  }
-
+  },
 }).reopenClass({
-  positionalParams: ['name']
+  positionalParams: ['name'],
 });
