@@ -21,19 +21,21 @@ export default Service.extend({
     this.get('names');
   },
 
-  names: computed('components.@each.name', function() {
+  names: computed('components.@each.name', function () {
     return this.get('components')
-      .map((c) => c.get('name') ? String(c.get('name')).split(/\s+/) : [])
+      .map(c => (c.get('name') ? String(c.get('name')).split(/\s+/) : []))
       .reduce((a, b) => A(a.concat(b)), A())
       .uniq();
   }),
 
-  scheduleUpdate: observer('names.[]', function() {
+  scheduleUpdate: observer('names.[]', function () {
     this.scheduledRun = once(this, this.updateBodyClass);
   }),
 
   updateBodyClass() {
-    if (!this._dom) { return; }
+    if (!this._dom) {
+      return;
+    }
 
     let body = this._dom.body;
     let attr = body.getAttribute('class');
@@ -49,5 +51,5 @@ export default Service.extend({
 
   willDestroy() {
     cancel(this.scheduledRun);
-  }
+  },
 });
