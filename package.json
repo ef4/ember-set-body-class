@@ -45,6 +45,7 @@
     "ember-resolver": "^4.0.0",
     "ember-sinon": "^2.2.0",
     "ember-source": "~2.16.0",
+    "ember-try": "^1.4.0",
     "eslint": "^4.19.1",
     "fastboot": "^2.0.3",
     "loader.js": "^4.2.3",
