@@ -27,11 +27,11 @@
   },
   "devDependencies": {
     "bower": "^1.8.2",
-    "broccoli-asset-rev": "^2.4.5",
+    "broccoli-asset-rev": "^3.0.0",
     "ember-ajax": "^3.0.0",
     "ember-cli": "~2.16.2",
     "ember-cli-dependency-checker": "^2.0.0",
-    "ember-cli-fastboot": "https://github.com/ef4/ember-cli-fastboot#6db1842fe437c2d63f9f27ac0a8a56054ff8145e",
+    "ember-cli-fastboot": "^2.2.3",
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cli-htmlbars-inline-precompile": "^1.0.0",
     "ember-cli-inject-live-reload": "^1.4.1",
@@ -46,7 +46,7 @@
     "ember-sinon": "^2.2.0",
     "ember-source": "~2.16.0",
     "eslint": "^4.19.1",
-    "fastboot": "^1.1.1",
+    "fastboot": "^2.0.3",
     "loader.js": "^4.2.3",
     "qunitjs": "^2.4.1"
   },
