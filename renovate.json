@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "config:js-lib",
+    ":dependencyDashboard",
+    ":maintainLockFilesWeekly",
+    ":semanticCommitsDisabled"
+  ],
+
+  "postUpdateOptions": ["yarnDedupeHighest"]
+}
