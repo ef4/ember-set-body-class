@@ -5,6 +5,5 @@ module.exports = {
   rules: {
     'no-action': 'off',
     'no-curly-component-invocation': 'off',
-    'no-implicit-this': 'off',
   },
 };

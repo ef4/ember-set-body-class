@@ -1,20 +1,20 @@
-{{#if redText}}
+{{#if this.redText}}
   {{set-body-class "red-text"}}
 {{/if}}
 
-{{#if blueBackground}}
+{{#if this.blueBackground}}
   {{set-body-class "blue-background"}}
 {{/if}}
 
-{{set-body-class textSize}}
+{{set-body-class this.textSize}}
 
-<label>{{input type="checkbox" checked=redText name="redText"}} Red Text</label>
-<label>{{input type="checkbox" checked=blueBackground name="blueBackground"}} Blue Background</label>
+<label>{{input type="checkbox" checked=this.redText name="redText"}} Red Text</label>
+<label>{{input type="checkbox" checked=this.blueBackground name="blueBackground"}} Blue Background</label>
 <br />
 
 Text Size:
-<select onchange={{action (mut textSize) value="target.value"}} data-test-select>
-  {{#each textSizes as |textSizeChoice|}}
+<select onchange={{action (mut this.textSize) value="target.value"}} data-test-select>
+  {{#each this.textSizes as |textSizeChoice|}}
     <option value={{textSizeChoice}} >{{textSizeChoice}}</option>
   {{/each}}
 </select>
@@ -22,5 +22,5 @@ Text Size:
 <br />
 
 Any class name:
-{{input value=dynamicClassName name="dynamicClassName"}}
-{{set-body-class dynamicClassName}}
+{{input value=this.dynamicClassName name="dynamicClassName"}}
+{{set-body-class this.dynamicClassName}}
