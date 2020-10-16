@@ -48,7 +48,7 @@ jobs:
       fail-fast: true
       matrix:
         ember-try-scenario:
-          - ember-lts-3.8
+          - ember-3.10
           - ember-lts-3.12
           - ember-lts-3.16
           - ember-lts-3.20
