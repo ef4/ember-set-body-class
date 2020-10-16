@@ -23,6 +23,7 @@ jobs:
 
       - run: yarn install --frozen-lockfile
       - run: yarn lint:js
+      - run: yarn lint:hbs
       - run: yarn ember test
 
   floating-dependencies:
