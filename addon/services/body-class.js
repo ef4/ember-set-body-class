@@ -1,51 +1,54 @@
 import { getOwner } from '@ember/application';
 import Service from '@ember/service';
-import { computed, observer } from '@ember/object';
 import { A } from '@ember/array';
 import { once, cancel } from '@ember/runloop';
 
 export default Service.extend({
-  register(component) {
-    this.get('components').addObject(component);
+  register(id, classNames) {
+    this.registrations.set(id, classNames);
+    this.scheduleUpdate();
   },
 
-  deregister(component) {
-    this.get('components').removeObject(component);
+  deregister(id) {
+    this.registrations.delete(id);
+    this.scheduleUpdate();
   },
-
-  components: computed(() => A()),
 
   init() {
     this._super(...arguments);
     this._dom = getOwner(this).lookup('service:-document');
-
-    this.get('names');
+    this.registrations = new Map();
   },
 
-  names: computed('components.@each.name', function () {
-    return this.get('components')
-      .map(c => (c.get('name') ? String(c.get('name')).split(/\s+/) : []))
-      .reduce((a, b) => A(a.concat(b)), A())
-      .uniq();
-  }),
+  names() {
+    let allNames = new Set();
+    for (let classNames of this.registrations.values()) {
+      for (let className of classNames) {
+        allNames.add(className);
+      }
+    }
+    return [...allNames];
+  },
 
-  scheduleUpdate: observer('names.[]', function () {
+  scheduleUpdate() {
     this.scheduledRun = once(this, this.updateBodyClass);
-  }),
+  },
 
   updateBodyClass() {
     if (!this._dom) {
       return;
     }
 
+    let registeredClassNames = this.names();
+
     let body = this._dom.body;
     let attr = body.getAttribute('class');
     let classList = A(attr ? attr.split(/\s+/) : []);
 
     classList.removeObjects(this._previousNames || []);
-    classList.addObjects(this.get('names'));
+    classList.addObjects(registeredClassNames);
 
-    this._previousNames = this.get('names');
+    this._previousNames = registeredClassNames;
 
     body.setAttribute('class', classList.join(' '));
   },
