@@ -1,12 +1,11 @@
+import { getOwner } from '@ember/application';
 import Service from '@ember/service';
 import { computed, observer } from '@ember/object';
 import { A } from '@ember/array';
 import { once, cancel } from '@ember/runloop';
-import getDOM from '../util/get-dom';
 
 export default Service.extend({
   register(component) {
-    this._dom = getDOM(component);
     this.get('components').addObject(component);
   },
 
@@ -18,6 +17,8 @@ export default Service.extend({
 
   init() {
     this._super(...arguments);
+    this._dom = getOwner(this).lookup('service:-document');
+
     this.get('names');
   },
 
