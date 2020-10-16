@@ -31,7 +31,7 @@
     "ember-cli-fastboot": "2.2.3",
     "ember-cli-fastboot-testing": "0.4.0",
     "ember-cli-htmlbars": "2.0.5",
-    "ember-cli-htmlbars-inline-precompile": "1.0.5",
+    "ember-cli-htmlbars-inline-precompile": "3.0.1",
     "ember-cli-inject-live-reload": "2.0.2",
     "ember-qunit": "4.6.0",
     "ember-disable-prototype-extensions": "1.1.3",
