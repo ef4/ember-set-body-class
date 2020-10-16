@@ -3,10 +3,10 @@ module.exports = {
   useYarn: true,
   scenarios: [
     {
-      name: 'ember-lts-3.8',
+      name: 'ember-3.10',
       npm: {
         devDependencies: {
-          'ember-source': '~3.8.0',
+          'ember-source': '~3.10.0',
         },
       },
     },
