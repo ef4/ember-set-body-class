@@ -1,3 +1,19 @@
+## 1.0.1 (2020-10-16)
+
+#### :memo: Documentation
+* [#64](https://github.com/ef4/ember-set-body-class/pull/64) Update README and add basic CONTRIBUTING guide ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#70](https://github.com/ef4/ember-set-body-class/pull/70) Convert dummy app objects to native classes ([@Turbo87](https://github.com/Turbo87))
+* [#71](https://github.com/ef4/ember-set-body-class/pull/71) template-lint: Fix `no-implicit-this` warnings ([@Turbo87](https://github.com/Turbo87))
+* [#68](https://github.com/ef4/ember-set-body-class/pull/68) Add `ember-template-lint` ([@Turbo87](https://github.com/Turbo87))
+* [#67](https://github.com/ef4/ember-set-body-class/pull/67) Remove obsolete `eslint-env` directives ([@Turbo87](https://github.com/Turbo87))
+* [#65](https://github.com/ef4/ember-set-body-class/pull/65) Add `@ember/optional-features` and CI scenarios without it ([@Turbo87](https://github.com/Turbo87))
+* [#63](https://github.com/ef4/ember-set-body-class/pull/63) Update `.npmignore` file ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 1
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
 ## v1.0.0 (2020-10-16)
 
 #### :boom: Breaking Change
