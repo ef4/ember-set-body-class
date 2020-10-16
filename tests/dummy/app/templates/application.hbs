@@ -13,7 +13,7 @@
 <br />
 
 Text Size:
-<select onchange={{action (mut textSize) value="target.value"}}>
+<select onchange={{action (mut textSize) value="target.value"}} data-test-select>
   {{#each textSizes as |textSizeChoice|}}
     <option value={{textSizeChoice}} >{{textSizeChoice}}</option>
   {{/each}}
