@@ -3,24 +3,21 @@ import Service from '@ember/service';
 import { A } from '@ember/array';
 import { once, cancel } from '@ember/runloop';
 
-export default Service.extend({
+export default class BodyClassService extends Service {
+  _dom = getOwner(this).lookup('service:-document');
+  registrations = new Map();
+
   register(id, classNames) {
     this.registrations.set(id, classNames);
     this.scheduleUpdate();
-  },
+  }
 
   deregister(id) {
     this.registrations.delete(id);
     this.scheduleUpdate();
-  },
+  }
 
-  init() {
-    this._super(...arguments);
-    this._dom = getOwner(this).lookup('service:-document');
-    this.registrations = new Map();
-  },
-
-  names() {
+  get names() {
     let allNames = new Set();
     for (let classNames of this.registrations.values()) {
       for (let className of classNames) {
@@ -28,18 +25,18 @@ export default Service.extend({
       }
     }
     return [...allNames];
-  },
+  }
 
   scheduleUpdate() {
     this.scheduledRun = once(this, this.updateBodyClass);
-  },
+  }
 
   updateBodyClass() {
     if (!this._dom) {
       return;
     }
 
-    let registeredClassNames = this.names();
+    let registeredClassNames = this.names;
 
     let body = this._dom.body;
     let attr = body.getAttribute('class');
@@ -51,9 +48,9 @@ export default Service.extend({
     this._previousNames = registeredClassNames;
 
     body.setAttribute('class', classList.join(' '));
-  },
+  }
 
   willDestroy() {
     cancel(this.scheduledRun);
-  },
-});
+  }
+}
