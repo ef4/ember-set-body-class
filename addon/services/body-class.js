@@ -5,6 +5,7 @@ import { once, cancel } from '@ember/runloop';
 
 export default class BodyClassService extends Service {
   _dom = getOwner(this).lookup('service:-document');
+  _fastboot = getOwner(this).lookup('service:fastboot');
   registrations = new Map();
 
   register(id, classNames) {
@@ -51,6 +52,10 @@ export default class BodyClassService extends Service {
   }
 
   willDestroy() {
-    cancel(this.scheduledRun);
+    if (this._fastboot && this._fastboot.isFastBoot) {
+      // prevent FastBoot from removing the CSS classes
+      // again before the response is sent out
+      cancel(this.scheduledRun);
+    }
   }
 }
