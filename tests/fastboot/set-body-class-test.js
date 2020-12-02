@@ -6,7 +6,7 @@ module('Fastboot | set-body-class', function (hooks) {
 
   test('it works', async function (assert) {
     let { htmlDocument } = await visit('/');
-    assert.ok(htmlDocument.body.classList.contains('red-text'));
-    assert.ok(htmlDocument.body.classList.contains('small-text'));
+    assert.dom(htmlDocument.body).hasClass('red-text');
+    assert.dom(htmlDocument.body).hasClass('small-text');
   });
 });
