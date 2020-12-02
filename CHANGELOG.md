@@ -1,4 +1,15 @@
-## 1.0.1 (2020-10-16)
+## v1.0.2 (2020-12-02)
+
+#### :bug: Bug Fix
+* [#92](https://github.com/ef4/ember-set-body-class/pull/92) services/body-class: Cancel the scheduled update only on fastboot ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#82](https://github.com/ef4/ember-set-body-class/pull/82) Adjust browser targets to transpile optional chaining away ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 1
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
+## v1.0.1 (2020-10-16)
 
 #### :memo: Documentation
 * [#64](https://github.com/ef4/ember-set-body-class/pull/64) Update README and add basic CONTRIBUTING guide ([@Turbo87](https://github.com/Turbo87))
