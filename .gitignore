@@ -1,58 +1,17 @@
-# Dependencies
-node_modules/
-.node_modules.ember-try/
+# compiled output
+dist/
+dist-tests/
+declarations/
 
-# Build outputs
-/dist/
-/tmp/
-/coverage/
-addon/dist/
-test-app/dist/
-**/dist/
+# from scenarios
+tmp/
+config/optional-features.json
+ember-cli-build.js
 
-# Environment files
-.env
-.env.local
-.env.*.local
-
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# Lock files (choose one based on your package manager preference)
-# If using pnpm, you might want to keep pnpm-lock.yaml
-# yarn.lock
-# package-lock.json
-
-# IDE/Editor files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Testing
-testem.log
-/coverage/
-/.nyc_output/
-
-# Ember specific
-/bower_components/
-/.sass-cache/
-/connect.lock
-/libpeerconnection.log
-
-# Misc
+# npm/pnpm/yarn pack output
 *.tgz
-*.tar.gz
+
+# deps & caches
+node_modules/
+.eslintcache
+.prettiercache
