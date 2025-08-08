@@ -1,25 +1,29 @@
-import { getOwner } from '@ember/application';
+import { getOwner } from '@ember/owner';
 import Service from '@ember/service';
 import { A } from '@ember/array';
 import { once, cancel } from '@ember/runloop';
+import type { EmberRunTimer } from '@ember/runloop/types';
 
 export default class BodyClassService extends Service {
-  _dom = getOwner(this).lookup('service:-document');
-  _fastboot = getOwner(this).lookup('service:fastboot');
-  registrations = new Map();
+  _dom = getOwner(this)?.lookup('service:-document') as Document | undefined;
+  _fastboot = getOwner(this)?.lookup('service:fastboot');
+  registrations = new Map<string, string[]>();
+  scheduledRun?: EmberRunTimer;
+  _previousNames: string[] | undefined;
 
-  register(id, classNames) {
+
+  register(id: string, classNames: string[]) {
     this.registrations.set(id, classNames);
     this.scheduleUpdate();
   }
 
-  deregister(id) {
+  deregister(id: string) {
     this.registrations.delete(id);
     this.scheduleUpdate();
   }
 
   get names() {
-    let allNames = new Set();
+    let allNames = new Set<string>();
     for (let classNames of this.registrations.values()) {
       for (let className of classNames) {
         allNames.add(className);
@@ -43,15 +47,17 @@ export default class BodyClassService extends Service {
     let attr = body.getAttribute('class');
     let classList = A(attr ? attr.split(/\s+/) : []);
 
-    classList.removeObjects(this._previousNames || []);
-    classList.addObjects(registeredClassNames);
+    classList.removeObjects(A(this._previousNames || []));
+    classList.addObjects(A(registeredClassNames));
 
     this._previousNames = registeredClassNames;
 
     body.setAttribute('class', classList.join(' '));
   }
 
-  willDestroy() {
+  override willDestroy() {
+    super.willDestroy();
+    //@ts-expect-error
     if (this._fastboot && this._fastboot.isFastBoot) {
       // prevent FastBoot from removing the CSS classes
       // again before the response is sent out
