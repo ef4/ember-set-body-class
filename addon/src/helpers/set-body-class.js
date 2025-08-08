@@ -1,8 +1,6 @@
 import Helper from '@ember/component/helper';
 import { guidFor } from '@ember/object/internals';
-import * as emberService from '@ember/service';
-
-const service = emberService.service ?? emberService.inject;
+import { service } from '@ember/service';
 
 export default class SetBodyClassHelper extends Helper {
   @service bodyClass;
@@ -10,12 +8,12 @@ export default class SetBodyClassHelper extends Helper {
   id = guidFor(this);
 
   compute([_classNames]) {
-    let classNames = _classNames ? _classNames.split(/\s+/) : [];
+    const classNames = _classNames ? _classNames.split(/\s+/) : [];
     this.bodyClass.register(this.id, classNames);
   }
 
   willDestroy() {
-    super.willDestroy(...arguments);
+    super.willDestroy();
     this.bodyClass.deregister(this.id);
   }
 }

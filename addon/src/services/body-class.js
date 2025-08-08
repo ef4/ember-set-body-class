@@ -19,9 +19,9 @@ export default class BodyClassService extends Service {
   }
 
   get names() {
-    let allNames = new Set();
-    for (let classNames of this.registrations.values()) {
-      for (let className of classNames) {
+    const allNames = new Set();
+    for (const classNames of this.registrations.values()) {
+      for (const className of classNames) {
         allNames.add(className);
       }
     }
@@ -37,11 +37,11 @@ export default class BodyClassService extends Service {
       return;
     }
 
-    let registeredClassNames = this.names;
+    const registeredClassNames = this.names;
 
-    let body = this._dom.body;
-    let attr = body.getAttribute('class');
-    let classList = A(attr ? attr.split(/\s+/) : []);
+    const body = this._dom.body;
+    const attr = body.getAttribute('class');
+    const classList = A(attr ? attr.split(/\s+/) : []);
 
     classList.removeObjects(this._previousNames || []);
     classList.addObjects(registeredClassNames);
@@ -52,7 +52,8 @@ export default class BodyClassService extends Service {
   }
 
   willDestroy() {
-    if (this._fastboot && this._fastboot.isFastBoot) {
+    super.willDestroy();
+    if (this._fastboot && this._fastboot.isFastBoot && this.scheduledRun) {
       // prevent FastBoot from removing the CSS classes
       // again before the response is sent out
       cancel(this.scheduledRun);
