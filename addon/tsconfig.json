@@ -18,13 +18,10 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "allowJs": false,
-    "outDir": "dist",
+    "noEmit": true,
+    "isolatedModules": true,
     "types": ["@types/ember"]
   },
   "include": ["src/**/*"],
-  "exclude": ["dist", "node_modules", "**/*.d.ts"],
-  "ts-node": {
-    "esm": true,
-    "experimentalSpecifierResolution": "node"
-  }
+  "exclude": ["dist", "node_modules", "**/*.d.ts"]
 }

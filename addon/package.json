@@ -33,17 +33,14 @@
   ],
   "scripts": {
     "build": "rollup --config",
-    "prepublishOnly": "rollup --config",
+    "lint:types": "tsc --noEmit",
+    "prepack": "rollup --config",
     "start": "rollup --config --watch"
   },
   "ember-addon": {
     "main": "addon-main.js",
     "type": "addon",
-    "version": 2,
-    "app-js": {
-      "./helpers/set-body-class.js": "./dist/_app_/helpers/set-body-class.js",
-      "./services/body-class.js": "./dist/_app_/services/body-class.js"
-    }
+    "version": 2
   },
   "devDependencies": {
     "@babel/core": "^7.28.0",
@@ -57,6 +54,7 @@
     "@types/ember__array": "^4.0.10",
     "@types/ember__component": "^4.0.22",
     "@types/ember__object": "^4.0.12",
+    "@types/ember__owner": "^4.0.9",
     "@types/ember__runloop": "^4.0.10",
     "@types/ember__service": "^4.0.9",
     "rollup": "^4.46.2",
