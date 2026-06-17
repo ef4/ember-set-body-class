@@ -1,3 +1,11 @@
+## 1.0.3 (2026-06-17)
+
+#### :bug: Bug Fix
+* [#242](https://github.com/ef4/ember-set-body-class/pull/242) Fix for deprecation: Importing inject from @ember/service ([@johanrd](https://github.com/johanrd))
+
+#### Committers: 1
+- Johan Røed ([@johanrd](https://github.com/johanrd))
+
 ## v1.0.2 (2020-12-02)
 
 #### :bug: Bug Fix
